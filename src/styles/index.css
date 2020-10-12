@@ -1,0 +1,35 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+:root {
+  --black: #000000;
+  --white: #FFFFFF;
+  --grayBg: rgb(27, 28, 36);
+  --mainOrange: #ff6600;
+  --footerBg: rgb(34, 34, 34);
+  --footerTxt: rgb(128,128,128);
+  --childrenMargTop: 100px;
+
+}
+
+#root{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html,
+body{
+  margin:0;
+  padding: 0;
+  background: var(--grayBg);
+  color: var(--white);
+}
+
+a {
+  color: inherit;
+} 
