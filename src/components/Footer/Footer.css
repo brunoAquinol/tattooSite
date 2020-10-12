@@ -1,0 +1,74 @@
+.footerApp{
+    color: var(--footerTxt);
+    background-color: var(--footerBg) ;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+}
+
+.contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.WhatsAppIcon{
+    font-size: 50px;
+}
+
+.whatsIcon{
+    margin-right: 10px;
+}
+
+.mapAddress{
+    text-align: center;
+}
+
+.mapTxtMark{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -25px;
+}
+
+.mapMark{
+    color: #ff6600;
+    margin-right: 5px;
+    
+}
+
+.footerImg{
+    width: 100%;
+    height: 300px;
+}
+
+.devName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/*.devName h2{
+    padding-left: 10px;
+}*/
+
+.devTxt{
+    font-size: 14px;
+    font-weight: bold;
+    
+}
+
+.name{
+    font-size: 18px;
+    color: var(--mainOrange);
+    margin-left: -3px;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #c95305;
+}

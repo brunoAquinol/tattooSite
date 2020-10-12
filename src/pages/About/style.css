@@ -1,0 +1,9 @@
+body{
+    margin-top: var(--childrenMargTop);
+
+}
+
+.all{
+    padding-left: 5%;
+    padding-right: 5%;
+}
