@@ -38,7 +38,7 @@ function Footer(){
 
             <div className="devName">
                 <h2 className="devTxt">Desenvolvido por:</h2>
-                <h2 className="name"><a href="https://www.linkedin.com/in/bruno-aquino-ab547a144/" target="_blank">Bruno Aquino de Oliveira </a></h2>
+                <h2 className="name"><a href="https://www.linkedin.com/in/bruno-aquino-ab547a144/" target="_blank" rel="noopener noreferrer">Bruno Aquino de Oliveira </a></h2>
             </div>
             
         </footer>
