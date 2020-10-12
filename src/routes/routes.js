@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 //import Navbar from '../components/Nav/Navbar'
 import store from "../store";
-import Index from '../pages/App';
+import Index from '../pages/Home';
 import About from "../containers/about";
 
 function AppRouter(){
