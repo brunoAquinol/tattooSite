@@ -1,9 +1,11 @@
 import React from 'react';
-import profilePic from '../../assets/img/LogoNav.png';
+import {Container, Row} from 'react-bootstrap'
 
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 import PageDefault from '../../components/PageDefault';
+import Professional from '../../components/Professional';
+import Title from '../../components/Title';
+
 import PromoImg from '../../assets/img/promo.png';
 import Tatu1 from '../../assets/img/t1.jpg';
 import Tatu2 from '../../assets/img/t2.jpg';
@@ -27,69 +29,27 @@ function App() {
         <div className="body">
 
           <section className="galleryDiv">
-            <div className="titulo">
-              <div className="risco"></div>
-              <h1>Galeria</h1>
-              <div className="risco"></div>
-            </div>
-            <div className="galleryImg">
-              <img src={Tatu1} alt="tatu1" />
-              <img src={Tatu2} alt="tatu1" />
-              <img src={Tatu3} alt="tatu1" />
-              <img src={Tatu4} alt="tatu1" />
-              <img src={Tatu5} alt="tatu1" />
-              <img src={Tatu6} alt="tatu1" />
-              <img src={Tatu7} alt="tatu1" />
-              <img src={Tatu8} alt="tatu1" />
-              <img src={Tatu9} alt="tatu1" />
-              <img src={Tatu10} alt="tatu1" />
-            </div>
+            <Title titulo="Galeria"/>
+              <Container className="galleryImg">
+                <Row xs={3} sm={4}>
+                <img src={Tatu1} alt="tatu1" />
+                <img src={Tatu2} alt="tatu1" />
+                <img src={Tatu3} alt="tatu1" />
+                <img src={Tatu4} alt="tatu1" />
+                <img src={Tatu5} alt="tatu1" />
+                <img src={Tatu6} alt="tatu1" />
+                <img src={Tatu7} alt="tatu1" />
+                <img src={Tatu8} alt="tatu1" />
+                <img src={Tatu9} alt="tatu1" />
+                <img src={Tatu10} alt="tatu1" />
+                <img src={Tatu10} alt="tatu1" />
+                <img src={Tatu10} alt="tatu1" />
+                </Row>
+              </Container>
           </section>
-
-          <div className="professional">
-            <div className="titulo">
-                <div className="risco"></div>
-                <h1>Tatuadores</h1>
-                <div className="risco"></div>
-              </div>
-            <div className="profImgTxt">
-              <div className="profImgLegend">
-                <img className="profileImg" src={profilePic} alt="profilePic"></img>
-                <p>@joselitoTattoo</p>
-              </div>
-              <div className="profileTxt">
-                <h2>Joselito</h2>
-                <p className="p1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vehicula metus sem, a dignissim leo semper a. Integer lacinia libero est, sed varius turpis vestibulum id. Pellentesque nec neque posuere, porta tellus eget, pharetra velit. Donec consectetur efficitur efficitur...
-                </p>
-              </div>
-              <div className="lineContact"></div>
-              <div className="bookNArrow">
-                <p className="p2">AGENDAR</p>
-                <ArrowForwardIcon/>
-              </div>
-            </div>
-
-
-            <div className="profImgTxt">
-              <div className="profImgLegend">
-                <img className="profileImg" src={profilePic} alt="profilePic"></img>
-                <p>@nunesTattoo</p>
-              </div>
-              <div className="profileTxt">
-                <h2>Nunes</h2>
-                <p className="p1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vehicula metus sem, a dignissim leo semper a. Integer lacinia libero est, sed varius turpis vestibulum id. Pellentesque nec neque posuere, porta tellus eget, pharetra velit. Donec consectetur efficitur efficitur...
-                </p>
-              </div>
-              <div className="lineContact"></div>
-              <div className="bookNArrow">
-                <p className="p2">AGENDAR</p>
-                <ArrowForwardIcon/>
-              </div>
-            </div>
-
-          </div>
+          <Title titulo="Artistas"/>
+          <Professional/>
+           
         </div>  
       </div>
     </PageDefault>

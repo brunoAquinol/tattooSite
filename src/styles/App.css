@@ -3,15 +3,22 @@
   margin-top: -50px;
 }
 
-.App{
+/*.App{
   padding-left: 5%;
   padding-right: 5%;
-}
+}*/
 
+.galleryDiv{
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+/*
 .titulo{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .risco{
@@ -22,85 +29,10 @@
 
 h1{
   text-align: center;
+  font-size: 30px;
   margin-left: 15px;
   margin-right: 15px;
-}
-
+}*/
 .galleryImg{
-  display: flexbox;
-  flex-direction: row;
-  text-align: center;
-}
-
-.galleryImg img{
-  width:250px;
-  height: 500px;
-}
-
-.professional p, h2{
-  margin-right: 9px;
-  margin-left: 10px;
-}
-
-.profImgTxt{
-  display: flex;
-  background-color: cadetblue;
-  color: white;
-  border-radius: 30px;
-  padding: 20px;
-  margin-bottom: 10px;
-}
-.profImgLegend{
-  display: flexbox;
-  text-align: center;
-}
-
-.profImgLegend p{
-  margin-top: -2px;
-}
-
-.profileTxt{
-  display: flexbox;
-}
-
-  
-.p1{
-  font-size: 15px;
-  text-shadow: 5px 5px 10px #868686;
-}
-
-.p2{
-  font-size: 20px;
-  text-align: right;
-}
-
-.lineContact{
-  background-color:rgb(152, 191, 192);
-  width: 2px;
-}
-
-.bookNArrow{
-  display: flex;
-  align-items: center;  
-}
-
-.profileImg{
-  width: 150px;
-  height: 150px;
-  align-self: center;
-}
-
-.bookEstArea{
-  display: block;
-  width: 100%;
-}
-
-@media (max-width:768px){
-
-  .galleryImg img{
-    width:80px;
-    height: 160px;
-  }
-
-
+  margin-right: auto;
 }

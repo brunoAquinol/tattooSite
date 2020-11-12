@@ -26,8 +26,14 @@ input{
     padding-left: 15px;
 }
 
+select{
+    height: 50px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+
 textarea{
-    width: 50vh;
+    height: 20vh;
     border-radius: 7px;
     background: var(--white);
     padding: 15px;

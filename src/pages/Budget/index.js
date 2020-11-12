@@ -1,106 +1,90 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Formik} from 'formik';
+import {Container, Row} from 'react-bootstrap';
+import axios from 'axios';
 
 import './style.css';
 import PageDefault from '../../components/PageDefault'
 
 function Budget(){
+
+    const [fields, setFields] = useState({
+        name:'',
+        email:'',
+        phone:'',
+        tatoo:'0',
+        file:'',
+        description:''
+    });
+
+    function handleInputChange(e){
+        fields[e.target.name] = e.target.value;
+        setFields(fields);
+    }
+
+    function handleFormSubmit(e){
+        e.preventDefault();
+        axios.post('http://localhost:5000/orcamento', fields).then(response =>{
+            alert('Done');
+            
+        }).then(window.location.reload())
+    } 
+
     return(
+
         <PageDefault>
             <div className="all">
                 <h1> ORÇAMENTO </h1>
                 <p> Nos conte a sua ideia</p>
-                <Formik
-                    initialValues={{nome:'', email:'', telefone:'', tatuador:'', descricao:''}}
-                    validate={
-                        values => {
-                            const errors = {};
-                            if(
-                                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                            ){
-                                errors.email = 'Email Inválido';
-                            }
-                            return errors;
-                        }}
-                        onSubmit={(values, {setSubmitting}) =>{
-                            setTimeout(() =>{
-                                alert(JSON.stringify(values, null, 2));
-                                setSubmitting(false);
-                            }, 400);
-                        }}
-                >
-                    {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      handleSubmit,
-                      isSubmitting  
-                    }) =>(
 
-                        <form onSubmit={handleSubmit}>
+                <form onSubmit={handleFormSubmit}>
 
+                    <Container>
+                        <Row xs={1} sm={1} md={2}>
                             <input 
                                 type="text"
-                                name="nome"
+                                name="name"
                                 placeholder="Nome"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.nome}
+                                onChange={handleInputChange}
                             />
-                            {errors.nome && touched.nome && errors.nome}
-
                             <input 
                                 type="email"
                                 name="email"
                                 placeholder="Email"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
+                                onChange={handleInputChange}
                             />
-                            {errors.email && touched.email && errors.email}
-
                             <input 
                                 type="text"
-                                name="telefone"
+                                name="phone"
                                 required
                                 placeholder="Whatsapp com DDD"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.telefone}
+                                onChange={handleInputChange}
                             />
-                            {errors.telefone && touched.telefone && errors.telefone}
-
-                            
-
                                 <select
-                                    
-                                />
+                                name="tatoo"
+                                id="tatuador"
+                                >
+                                    <option value="0" label="Escolha um tatuador" />
+                                    {/*tatuador.map(tatuador =>(<option key={tatuador.id} value={tatuador.id}>{tatuador.nome}</option>))*/}
+                                </select>
 
                                 <input
                                     type="file"
                                     name="file"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.telefone}
+                                    onChange={handleInputChange}
                                 />
-                            
-
-                            <textarea
-                                type="text"
-                                name="descricao"
-                                placeholder="Nos conte a sua ideia"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.descricao}
-                            />
-                            {errors.descricao && touched.descricao && errors.descricao}
-
-                        </form>
-                    )}
-
-                </Formik>
+                            </Row>
+                            <Row xs={1} sm={1}>
+                                <textarea
+                                    type="text"
+                                    name="description"
+                                    placeholder="Nos conte a sua ideia"
+                                    onChange={handleInputChange}
+                                /> 
+                            </Row>
+                            <input type="submit" value="Enviar" />
+                    </Container>
+                </form>
             </div>
             
 

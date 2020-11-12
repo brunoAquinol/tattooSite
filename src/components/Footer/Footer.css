@@ -6,29 +6,18 @@
     text-align: center;
 }
 
-.contact{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.WhatsAppIcon{
-    font-size: 50px;
-}
-
-.whatsIcon{
-    margin-right: 10px;
-}
-
 .mapAddress{
     text-align: center;
 }
 
+.mapAddress h2{
+    margin-top: 20px;
+}
+
 .mapTxtMark{
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: -25px;
+    margin-top: 15px;
 }
 
 .mapMark{
@@ -49,9 +38,9 @@
     margin-top: 20px;
 }
 
-/*.devName h2{
-    padding-left: 10px;
-}*/
+.map{
+    width: 100%;   
+}
 
 .devTxt{
     font-size: 14px;
@@ -62,7 +51,7 @@
 .name{
     font-size: 18px;
     color: var(--mainOrange);
-    margin-left: -3px;
+    margin-left: 5px;
 }
 
 a{
