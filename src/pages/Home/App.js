@@ -20,6 +20,7 @@ import Tatu10 from '../../assets/img/t10.jpg';
 
 
 import '../../styles/App.css';
+import { RowingOutlined } from '@material-ui/icons';
 
 function App() {
   return (
@@ -49,7 +50,7 @@ function App() {
           </section>
           <Title titulo="Artistas"/>
           <Professional/>
-           
+
         </div>  
       </div>
     </PageDefault>

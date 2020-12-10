@@ -3,23 +3,31 @@ import styled from 'styled-components';
 
 import profilePic from '../../assets/img/LogoNav.png';
 
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import DateRangeIcon from '@material-ui/icons/DateRange';
 
 const ProfPerfil = styled.div`
 
 .professional p, h2{
   margin-right: 9px;
   margin-left: 10px;
+  text-align: center;
 }
 
 .profImgTxt{
-  display: flex;
-  background-color: cadetblue;
-  color: white;
+  display: block;
+  background-color: white;
+  color: black;
+  width: 50%;
   border-radius: 30px;
-  padding: 20px;
+  padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.profImgTxt{
+  box-shadow: 4px 4px 20px  var(--mainOrange);
 }
 
 .profImgLegend{
@@ -34,6 +42,7 @@ const ProfPerfil = styled.div`
   display: flexbox;
 }*/
  
+/*
 .p1{
   font-size: 15px;
   text-shadow: 5px 5px 10px #868686;
@@ -41,6 +50,7 @@ const ProfPerfil = styled.div`
   margin-left: 10px;
   margin-right: 10px;
 }
+*/
 
 .p2{
   font-size: 20px;
@@ -53,7 +63,7 @@ const ProfPerfil = styled.div`
   width: 2px;
 }
 
-.bookNArrow{
+.bookNBudget{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,7 +94,7 @@ const ProfPerfil = styled.div`
   width: 2px;
 }
 
-.bookNArrow{
+.bookNBudget{
   justify-content: flex-end;  
 }
 
@@ -102,14 +112,15 @@ function Professional(){
               </div>
               <div className="profileTxt">
                 <h2>Joselito</h2>
-                <p className="p1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vehicula metus sem, a dignissim leo semper a. Integer lacinia libero est, sed varius turpis vestibulum id. Pellentesque nec neque posuere, porta tellus eget, pharetra velit. Donec consectetur efficitur efficitur...
-                </p>
               </div>
               <div className="lineContact"></div>
-              <div className="bookNArrow">
-                <p className="p2">AGENDAR</p>
-                <ArrowForwardIcon/>
+              <div className="bookNBudget">
+                <DateRangeIcon/>
+                <p className="p2">Agendar</p>
+              </div>
+              <div className="bookNBudget">
+                <MonetizationOnIcon/>
+                <p className="p2">Orçamento</p>
               </div>
             </div>
         </ProfPerfil>
