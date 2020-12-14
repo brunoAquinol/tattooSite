@@ -9,6 +9,11 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 
 const ProfPerfil = styled.div`
 
+.professional{
+ display: flex;
+ justify-content: center;
+ align-content: center;
+}
 
 .professional p, h2{
   margin-right: 9px;
