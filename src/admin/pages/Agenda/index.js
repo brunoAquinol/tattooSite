@@ -2,12 +2,12 @@ import React from 'react';
 
 import PageDefault from '../../components/PageDefault'
 
-function Config(){
+function Agenda(){
     return(
         <PageDefault>
-            <h1> PAGINA DE CONFIGURAÇÃO </h1>
+            <h1> PAGINA DE AGENDA </h1>
         </PageDefault>
     );
 }
 
-export default Config;
+export default Agenda;

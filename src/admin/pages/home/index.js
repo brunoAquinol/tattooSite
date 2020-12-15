@@ -1,18 +1,20 @@
 import React from 'react'
 
-import Navbar from '../../components/Menu/Nav/Navbar'
+import PageDefault from '../../components/PageDefault'
 
 
 
 function HomeAdmin(){
     return(
-        <div>
-            
-            <Navbar />
+           
+        <PageDefault>
+
             <h1>
                 Construção area administração
             </h1>
-        </div>
+            
+        </PageDefault>
+
 
     );
 }

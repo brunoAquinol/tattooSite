@@ -3,7 +3,7 @@ import React from 'react';
 import PageDefault from '../../components/PageDefault';
 
 
-function Agenda(){
+function Agendamento(){
     return(
         <PageDefault>
             <h1>AGENDAMENTO</h1>
@@ -11,4 +11,4 @@ function Agenda(){
     );
 };
 
-export default Agenda;
+export default Agendamento;

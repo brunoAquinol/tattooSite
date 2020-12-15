@@ -23,9 +23,7 @@ const Ul = styled.ul`
     li{
         //padding: 18px 10px;
         color: black;
-        font-size: 15px;
-    
-        
+        font-size: 12px;   
     }
 
     li:hover{
@@ -61,7 +59,7 @@ const Menu = () =>{
     return(
         <Ul>
             <Container>
-                <Row xs={4} sm={4}>
+                <Row xs={5} sm={5}>
                     <div className="IconTxt">
                         <StyledLink to="/admin">
                             <HomeIcon/>
@@ -84,6 +82,12 @@ const Menu = () =>{
                         <StyledLink to="/admin/usuarios" >
                             <PeopleIcon/>
                             <li>Usuários</li>
+                        </StyledLink>
+                    </div>
+                    <div className="IconTxt">
+                        <StyledLink to="/admin/config" >
+                            <SettingsIcon/>
+                            <li>Configurações</li>
                         </StyledLink>
                     </div>
                 </Row>
