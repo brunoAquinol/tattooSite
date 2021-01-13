@@ -1,17 +1,63 @@
-import React from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import React, {useState} from "react";
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-import store from "../store";
-import Index from '../pages/Home';
-import About from "../containers/about";
+import App from '../pages/Home/App.js';
+import About from '../pages/About/index';
+import Budget from '../pages/Budget';
+import Agendamento from '../pages/Agendamento'
+import Contact from '../pages/Contact';
+import Login from '../pages/Login/Login'
+import Home from "../admin/pages/home";
+import Orcamento from "../admin/pages/orcamentos";
+import Usuario from "../admin/pages/Usuario";
+import Agenda from "../admin/pages/Agenda";
+import Config from "../admin/pages/Config";
+import Error404 from '../pages/Error404';
+
+import ScrollToTop from '../components/ScrollToTop';
 
 function AppRouter(){
+
+    const [token, setToken] = useState();
+
+    if(!token) {
+        return(
+            <BrowserRouter>
+                <ScrollToTop>
+                <Switch>
+                    <Route path="/" component={App} exact />
+                    <Route path="/sobre" component={About} />
+                    <Route path="/orcamento" component={Budget} />
+                    <Route path="/agendamento" component={Agendamento} />
+                    <Route path="/contato" component={Contact} />
+                    <Route path="/admin/home" component={Home} />
+                    <Route path="/admin/orcamentos" component={Orcamento} />
+                    <Route path="/admin/usuarios" component={Usuario} />
+                    <Route path="/admin/agenda" component={Agenda} />
+                    <Route path="/admin/configuracao" component={Config} />
+                    <Route path="/login" >
+                        <Login setToken={setToken} />
+                    </Route>
+                    <Route component={Error404} />
+                </Switch>
+                </ScrollToTop>
+            </BrowserRouter>
+            
+        );
+      }
+
     return(
-
         <BrowserRouter>
-            <Route path="/" exact component={Index} />
-
-            <Route path="/about" exact component={About} />
+            <ScrollToTop>
+                <Switch>
+                    <Route path="/admin" exact component={Home} />
+                    <Route path="/admin/orcamentos" exact component={Orcamento} />
+                    <Route path="/admin/usuarios" exact component={Usuario} />
+                    <Route path="/admin/agenda" exact component={Agenda} />
+                    <Route path="/admin/config" exact component={Config} />
+                    <Route component={Error404} />
+                </Switch>
+            </ScrollToTop>
         </BrowserRouter>
         
     );

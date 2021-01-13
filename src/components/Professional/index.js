@@ -9,11 +9,8 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 
 const ProfPerfil = styled.div`
 
-.professional{
- display: flex;
- justify-content: center;
- align-content: center;
-}
+
+margin-right: 0px;
 
 .professional p, h2{
   margin-right: 9px;
@@ -25,7 +22,7 @@ const ProfPerfil = styled.div`
   display: block;
   background-color: white;
   color: black;
-  width: 300px;
+  width: 250px;
  // border-radius: 30px;
   padding: 10px;
   margin-top: 10px;
@@ -45,22 +42,8 @@ const ProfPerfil = styled.div`
   margin-top: -2px;
 }
 
-/*.profileTxt{
-  display: flexbox;
-}*/
- 
-/*
-.p1{
-  font-size: 15px;
-  text-shadow: 5px 5px 10px #868686;
-  text-align: justify;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-*/
-
 .p2{
-  font-size: 20px;
+  font-size: 15px;
   //text-align: right;
   //margin-left: 10px;
 }
@@ -110,23 +93,23 @@ const ProfPerfil = styled.div`
 
 @media (max-width:768px){
 
-.profImgTxt{
-  display: block;
-  padding: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+  .profImgTxt{
+    display: block;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
 }
 
 @media (max-width:768px){
 
-.profImgTxt{
-  display: block;
-  padding: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+  .profImgTxt{
+    display: block;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
 }
     `;
@@ -180,6 +163,8 @@ function Professional(){
                   </div>
                 </div>
               </div>
+
+              
             </Row>
           </Container>
         </ProfPerfil>

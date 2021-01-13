@@ -49,8 +49,9 @@ function App() {
               </Container>
           </section>
           <Title titulo="Artistas"/>
-          <Professional/>
-
+          <div className="artistas">
+            <Professional/>
+          </div>
         </div>  
       </div>
     </PageDefault>

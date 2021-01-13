@@ -13,7 +13,13 @@ const Nav = styled.nav`
     left:0;
     right:0;
 
-    background: white;
+    background: rgb(22, 22, 22);
+
+    .line{
+        width: 100%;
+        height: 1px;
+        background-color: var(--mainOrange);
+    }
 
 `;
 
@@ -21,6 +27,7 @@ const Navbar = () => {
     return(
         <header>
             <Nav>
+                <div className="line" />
                 <Menu/>
             </Nav>
         </header>

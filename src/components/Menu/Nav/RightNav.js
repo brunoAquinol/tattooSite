@@ -84,8 +84,9 @@ const RightNav = ({open}) =>{
             <StyledLink to="/contato" >
                 <li>Contato</li>
             </StyledLink>
-            <li className="login">Entrar</li>
-            <li className="singin">Registrar</li>
+            <StyledLink to="/login" >
+                <li className="login">Entrar</li>
+            </StyledLink>
         </Ul>
     )
 }

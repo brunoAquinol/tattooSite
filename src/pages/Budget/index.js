@@ -17,8 +17,8 @@ function Budget(){
         email:'',
         phone:'',
         tatoo:'',
-        file:'',
-        description:''
+        description:'',
+        respondido: 0
     });
 
     
@@ -26,6 +26,16 @@ function Budget(){
         fields[e.target.name] = e.target.value;
         setFields(fields);
     }
+    
+    
+    const history = useHistory();
+    
+    function handleFormSubmit(e){
+        e.preventDefault();
+        axios.post('http://localhost:5000/orcamento', fields)
+        .then(alert("Orçamento enviado com sucesso") )
+        .then(history.push('/'))      
+    } 
     
     /*  
     function handleFormSubmit(e){
@@ -39,14 +49,6 @@ function Budget(){
         })
     }
     */
-   
-   const history = useHistory();
-   function handleFormSubmit(e){
-        e.preventDefault();
-        axios.post('http://localhost:5000/orcamento', fields)
-        .then(alert("Orçamento enviado com sucesso") )
-        .then(history.push('/'))      
-    } 
     return(
 
         <PageDefault>
@@ -89,11 +91,6 @@ function Budget(){
                                     ]}
                                 />
 
-                                <input
-                                    type="file"
-                                    name="file"
-                                    onChange={handleInputChange}
-                                />
                                 </Row>
                                 <Row xs={1} sm={1}>
                                     <textarea

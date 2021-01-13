@@ -8,6 +8,7 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PeopleIcon from '@material-ui/icons/People';
 import SettingsIcon from '@material-ui/icons/Settings';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
 import { Link } from 'react-router-dom';
 
@@ -18,11 +19,11 @@ const Ul = styled.ul`
     display: flex;
     //justify-content: space-between;
     //align-items: center;
-    margin-left: -10%;
+
     
     li{
         //padding: 18px 10px;
-        color: black;
+        color: white;
         font-size: 12px;   
     }
 
@@ -44,6 +45,10 @@ const Ul = styled.ul`
         width: 1px;
         height: 50px;
     }
+
+    @media (max-width: 768px){
+        margin-left: -14%;
+    }
 `;
 
 const StyledLink = styled(Link)`
@@ -61,7 +66,7 @@ const Menu = () =>{
             <Container>
                 <Row xs={5} sm={5}>
                     <div className="IconTxt">
-                        <StyledLink to="/admin">
+                        <StyledLink className="home" to="/admin">
                             <HomeIcon/>
                             <li>Início</li>
                         </StyledLink>
