@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
-import {Container, Row, Alert} from 'react-bootstrap';
+import React, {useState, useEffect} from 'react';
+import {Container, Row} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom'
-import axios from 'axios';
 
 import './style.css';
 import PageDefault from '../../components/PageDefault'
@@ -21,7 +20,22 @@ function Budget(){
         respondido: 0
     });
 
+    const[professionals, setProfessional] = useState([]);
+
     
+    useEffect(
+        () => {
+            const loadProfessionals = () => {
+                api.get('professionals').then(response => {
+                    setProfessional(response.data)
+                })
+                
+            }
+
+            loadProfessionals();
+        }
+        ,[]);
+
     function handleInputChange(e){
         fields[e.target.name] = e.target.value;
         setFields(fields);
@@ -32,23 +46,11 @@ function Budget(){
     
     function handleFormSubmit(e){
         e.preventDefault();
-        axios.post('http://localhost:5000/orcamento', fields)
+        api.post('orcamento', fields)
         .then(alert("Orçamento enviado com sucesso") )
         .then(history.push('/'))      
     } 
-    
-    /*  
-    function handleFormSubmit(e){
-        e.preventDefault();
-        //console.log(fields);
-        api.post('orcamento', fields).then(() => {
-            alert('Cadastro realizado com sucesso!');
-        }
-        ).catch(() =>{
-            alert('Erro no cadastro!')
-        })
-    }
-    */
+
     return(
 
         <PageDefault>
@@ -60,7 +62,7 @@ function Budget(){
                     <form onSubmit={handleFormSubmit}>
 
                         <Container>
-                            <Row xs={1} sm={1} md={2}>
+                            <Row xs={1} sm={1} md={1}>
                                 <input 
                                     type="text"
                                     name="name"
@@ -85,10 +87,7 @@ function Budget(){
                                     name="tatoo"
                                     label="tatuador"
                                     onChange={handleInputChange}
-                                    option={[
-                                        {value: 'Bruno', label:'Bruno'},
-                                        {value: 'Arred', label:'Arred'}
-                                    ]}
+                                    option={professionals}
                                 />
 
                                 </Row>

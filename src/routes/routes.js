@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import App from '../pages/Home/App.js';
-import About from '../pages/About/index';
+import Artista from '../pages/Artista';
 import Budget from '../pages/Budget';
 import Agendamento from '../pages/Agendamento'
 import Contact from '../pages/Contact';
@@ -26,15 +26,15 @@ function AppRouter(){
                 <ScrollToTop>
                 <Switch>
                     <Route path="/" component={App} exact />
-                    <Route path="/sobre" component={About} />
+                    <Route path="/artista" component={Artista} />
                     <Route path="/orcamento" component={Budget} />
                     <Route path="/agendamento" component={Agendamento} />
                     <Route path="/contato" component={Contact} />
-                    <Route path="/admin/home" component={Home} />
+                    <Route path="/admin/index" component={Home} />
                     <Route path="/admin/orcamentos" component={Orcamento} />
                     <Route path="/admin/usuarios" component={Usuario} />
                     <Route path="/admin/agenda" component={Agenda} />
-                    <Route path="/admin/configuracao" component={Config} />
+                    <Route path="/admin/config" component={Config} />
                     <Route path="/login" >
                         <Login setToken={setToken} />
                     </Route>

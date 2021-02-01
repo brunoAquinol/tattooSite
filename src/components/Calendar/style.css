@@ -1,0 +1,87 @@
+h3{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.calendar{
+    margin-bottom: 20px;
+
+}
+
+.prevNNextbtn{
+    cursor: pointer;
+}
+
+.currMonthYearBefAft{
+    display: flex;
+    justify-content: space-around;
+}
+
+.monthPicker{
+    text-align: center;
+}
+
+.monthPicker span{
+    font-size: large;
+    margin-right: 5px;
+}
+
+.monthNaviPicker{
+    background-color:  white;
+    color: var(--mainOrange);
+}
+
+
+.calendar-day{
+    text-align: center;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table{
+    margin-bottom: 15px;
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+
+th{
+    width: 50px;
+    height: 50px;
+}
+
+.days{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.today{
+    background-color:blueviolet;
+}
+
+.subtitleTable{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.indisponivel{
+    background-color: grey;
+    height: 10px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.indispTxt{
+    margin-right: 40px;
+}
+
+.avaliacao{
+    background-color: yellow;
+    height: 10px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+

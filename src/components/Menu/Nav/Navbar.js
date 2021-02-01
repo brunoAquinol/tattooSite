@@ -29,7 +29,7 @@ const Nav = styled.nav`
         padding: 15px 0;
     }
 
-    img{
+    .navLogo{
         max-width:100px;
         margin-top: 5px;
         margin-bottom: 1px;
@@ -43,7 +43,7 @@ const Navbar = () => {
             <Nav>
                 <div className="logo">
                     <Link to="/">
-                        <img src={LogoNav} alt="LogoNav"/>
+                        <img className="navLogo" src={LogoNav} alt="LogoNav"/>
                     </Link>
                 </div>
                 <Burger/>

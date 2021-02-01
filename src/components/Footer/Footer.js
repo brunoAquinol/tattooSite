@@ -43,7 +43,7 @@ function Footer(){
                     <p>UPA Duque de Caxias 45, Parque Lafaiete, Duque de Caxias</p>
                 </div>
                 <div className="map">
-                    <img className="footerImg" src={LogoNav} alt="LogoNav" />
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.4245447483695!2d-43.32635678540336!3d-22.786727639325832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997ace9837bcbb%3A0xf78ae8757d063786!2sUPA%2024h%20Parque%20Lafaiete%20-%20Duque%20de%20Caxias%20I!5e0!3m2!1spt-BR!2sbr!4v1612205620079!5m2!1spt-BR!2sbr"  width="100%" height="350" frameborder="0"  allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
             

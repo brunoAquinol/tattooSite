@@ -1,0 +1,77 @@
+body{
+    margin-top: var(--childrenMargTop);
+}
+
+.completePerfil{
+    background-color: white;
+    margin-top: -50px;
+    margin-bottom: -30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.profileImg{
+    display: flex;
+    justify-content: center;
+}
+
+
+.perfilImg{
+    width: 50vh;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.perfilName{
+    color: black;
+    font-family: fantasy;
+}
+
+.aboutArtist{
+    display: block;
+    color: black;
+}
+
+.aboutArtist p{
+    text-align: justify;
+    margin: 10px 2% 20px;
+}
+
+.backgroundImg{
+    width: 100%;
+}
+
+.galery{
+    margin-top: -50px;
+}
+
+input.agendaName, input.agendaEmail, input.agendaTelefone{
+    width: 80%;
+}
+
+input.inputDate{
+    width: 50%;
+}
+
+textarea.agendaDescription, button{
+    width: 80%;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 425px){
+    input.agendaName, input.agendaEmail, input.agendaTelefone, button{
+        width: 85%;
+    }
+    
+    textarea.agendaDescription{
+        width: 85%;
+    }
+}
+
+/*
+.all{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+*/

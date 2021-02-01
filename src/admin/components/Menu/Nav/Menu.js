@@ -14,13 +14,14 @@ import { Link } from 'react-router-dom';
 
 const Ul = styled.ul`
     list-style:none;
+    display: flex;
     flex-flow: row nowrap;
     text-align: center;
-    display: flex;
-    //justify-content: space-between;
-    //align-items: center;
+    justify-content: space-around;
+    align-items: center;
+    padding:0;
 
-    
+
     li{
         //padding: 18px 10px;
         color: white;
@@ -31,7 +32,7 @@ const Ul = styled.ul`
         color: #ff6600;
         transition: 0.5s;
     }
-
+    
     .IconTxt{
         color: var(--mainOrange);
         //background-color: black;
@@ -39,16 +40,13 @@ const Ul = styled.ul`
         padding-top: 10px;
         height: 70px;
     }
-
+    
     .verticalLine{
         background-color: var(--mainOrange);
         width: 1px;
         height: 50px;
     }
 
-    @media (max-width: 768px){
-        margin-left: -14%;
-    }
 `;
 
 const StyledLink = styled(Link)`
@@ -59,14 +57,24 @@ const StyledLink = styled(Link)`
     }
 `;
 
+/*
+
+                    <div className="IconTxt">
+                        <StyledLink to="/admin/usuarios" >
+                            <PeopleIcon/>
+                            <li>Usuários</li>
+                        </StyledLink>
+                    </div>
+
+*/
 
 const Menu = () =>{
     return(
         <Ul>
-            <Container>
-                <Row xs={5} sm={5}>
+            <Container className="container">
+                <Row xs={4} sm={4}>
                     <div className="IconTxt">
-                        <StyledLink className="home" to="/admin">
+                        <StyledLink className="home" id="iconTxt" to="/admin/index">
                             <HomeIcon/>
                             <li>Início</li>
                         </StyledLink>
@@ -83,12 +91,7 @@ const Menu = () =>{
                             <li>Agenda</li>
                         </StyledLink>
                     </div>
-                    <div className="IconTxt">
-                        <StyledLink to="/admin/usuarios" >
-                            <PeopleIcon/>
-                            <li>Usuários</li>
-                        </StyledLink>
-                    </div>
+
                     <div className="IconTxt">
                         <StyledLink to="/admin/config" >
                             <SettingsIcon/>

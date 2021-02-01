@@ -2,6 +2,11 @@
     margin-top: -80px
 }
 
+.emptyOrcamento{
+    color:rgb(95, 94, 94);
+    margin-top: 100px;
+}
+
 header{
     text-align: center ;
 }
@@ -12,22 +17,27 @@ header{
     justify-content: space-between;
 }
 
-/*
-.modal{
-    display: 'flex';
-    align-items: 'center';
-    justify-content: 'center';
-}
 
-.paper{
-    background-color: theme.palette.background.paper;
-    border: 2px solid #000;
-    box-shadow: theme.shadows[5];
-    padding: theme.spacing(2, 4, 3);
-}
-*/
 .deleteIcon{
     color: rgb(255, 41, 41);
+}
+
+
+.pModalTxt {
+    font-size: 16px;
+}
+.pModalSure {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btnModal{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnModal button{
+    width: 40%;
 }
 
 h1{
@@ -55,10 +65,17 @@ strong{
 }
 
 .btnDelete{
-    background-color: transparent;
-    outline: none;
-    border: none;
+    width: 23px;
+    height: 27px;
+    cursor: pointer;
+    color:rgb(255, 41, 41);
+
 }
+
+.btnDelete:hover{
+    color: rgb(252, 118, 118);
+}
+
 
 hr{
     border-style: none none dashed;
@@ -112,6 +129,24 @@ hr{
 
 .price{
     margin-top: 15px;
+}
+
+.priceFinalizado{
+    display: flex;
+    margin-top: 15px;
+
+    font-size: 30px;
+}
+
+.priceFinalizado p{
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+input{
+    margin-left: 10px;
+    padding-left: 15px;
+    width: 100px;
 }
 
 .btnFinalizar{

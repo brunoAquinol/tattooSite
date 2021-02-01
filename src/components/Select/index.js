@@ -9,7 +9,7 @@ const Select = ({lable, name, option, ...rest}) =>{
             <select className="select-box"  id={name} name={name} {...rest}>
                 <option defaultValue="" disabled hidden selected>Escolha o tatuador</option>
                 {option.map(option =>{
-                    return <option key={option.value} value={option.value}>{option.label}</option>
+                    return <option key={option.id} value={option.id}>{option.nome}</option>
                     })}
             </select>
         </div>

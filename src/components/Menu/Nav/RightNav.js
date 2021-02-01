@@ -18,6 +18,10 @@ const Ul = styled.ul`
         
     }
 
+    .link:hover{
+        border-color: white;
+    }
+
     li:hover{
         color: #ff6600;
         transition: 0.5s;
@@ -34,7 +38,7 @@ const Ul = styled.ul`
         transform: ${({open}) => open ? 'translateX(0)' : 'translateX(100%)'};
         top:0;
         right:0;
-        height: 100vh;
+        height: 80%;
         width: 300px;
         padding-top: 3.5rem;
         transition: transform 0.3s ease-in-out;
@@ -53,7 +57,11 @@ const Ul = styled.ul`
         }
         
 
-    }    
+    } 
+
+    /* @media (max-width: 425px){
+        height: 80vh;  
+    } */
 
 `;
 
@@ -64,27 +72,32 @@ const StyledLink = styled(Link)`
         text-decoration: none;
     }
 `;
-
+/*            <StyledLink className="link" to="/sobre">
+                <li>Quem somos</li>
+            </StyledLink> 
+            
+            <StyledLink className="link" to="/agendamento">
+                <li>Agendamento</li>
+            </StyledLink>
+            <StyledLink className="link" to="/contato" >
+                <li>Contato</li>
+            </StyledLink>
+*/
 
 const RightNav = ({open}) =>{
     return(
         <Ul open={open}>
-            <StyledLink to="/">
+            <StyledLink className="link" to="/">
                 <li>Início</li>
             </StyledLink>
-            <StyledLink to="/sobre">
-                <li>Quem somos</li>
+            <StyledLink className="link" to="/artista/bruno">
+                <li>Bruno</li>
             </StyledLink>
-            <StyledLink to="/orcamento">
+            <StyledLink className="link" to="/orcamento">
                 <li>Orçamento</li>
             </StyledLink>
-            <StyledLink to="/agendamento">
-                <li>Agendamento</li>
-            </StyledLink>
-            <StyledLink to="/contato" >
-                <li>Contato</li>
-            </StyledLink>
-            <StyledLink to="/login" >
+
+            <StyledLink className="link" to="/login" >
                 <li className="login">Entrar</li>
             </StyledLink>
         </Ul>

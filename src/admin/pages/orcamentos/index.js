@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import PageDefault from '../../components/PageDefault';
-import {useHistory} from 'react-router-dom'
-import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 
 
 
 import Modal from '../../components/Modal/Modal';
 import Aba from '../../components/Aba/Aba';
+import api from '../../../services/api';
 
 
 
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+
 import './style.css';
 
 
@@ -21,19 +22,15 @@ function Orcamento(){
     const [orcamentos, setOrcamentos] = useState([]);
     const [finalizados, setFinalizados] = useState([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [idToDelete, setIdToDelete] = useState('');
 
     const history = useHistory();
 
     useEffect(() =>{
-        axios.get('http://localhost:5000/admin/orcamentos').then(response =>{
-            setOrcamentos(response.data);
-        })
-    },[]);
 
-    useEffect(() =>{
-        axios.get('http://localhost:5000/admin/resolvidos').then(response =>{
-            setFinalizados(response.data);
-        })
+        reloadOrcamento();
+        reloadFinalizados();
+
     },[]);
 
 
@@ -42,30 +39,90 @@ function Orcamento(){
         return allName[0];
     }
 
+
+    const reloadOrcamento = () =>{
+        api.get('orcamentos').then(response =>{
+            setOrcamentos(response.data)
+        }, (error) =>{
+            console.log(error)
+        });
+    }
+
+    const reloadFinalizados = () => {
+        api.get('resolvidos').then(response =>{
+            setFinalizados(response.data);
+        }, (error) =>{
+            console.log(error)
+        })
+    }
+
     const changeRespondido = (orcamento, tipo) => {
         const data =[orcamento, tipo]
-        console.log(data)
-        axios.post('http://localhost:5000/admin/orcamentos', data).then(res =>
-        console.log('Enviado com sucesso'));
-        history.push('./orcamentos');
+        api.post('orcamentos', data).then(response =>{
+            console.log(response.status)}, (error) =>{
+                console.log(error)
+            })
+        
+            if(tipo === 1){
+                reloadOrcamento();
+                reloadFinalizados();
+            }else{
+                reloadFinalizados();
+                reloadOrcamento();
+            }
     }
+
+    const changePriceInput = (e, index) =>{
+        let newOrcamentos = [...orcamentos];
+        newOrcamentos[index].preco = e.target.value;
+        setOrcamentos(newOrcamentos);          
+    }
+
+    const deleteData = id => {
+        const data = [id]
+        api.post('delete-orcamento', data).then(response =>
+            console.log(response))
+        
+        reloadOrcamento();
+        reloadFinalizados();
+        setIsModalVisible(false);
+    }
+
 
     return(
         <PageDefault>
             <div className="corpo">
+                <h1>DEPOIS TESTAR EM PRODUÇÃO A RESPOSTA DO FINALIZAR SE CARREGA AUTOMATICO AO CLICAR COMO EM AJAX</h1>
                 <h1>Orçamentos</h1>
-
+                {isModalVisible ? (
+                        <Modal 
+                        onClose={() => setIsModalVisible(false)} 
+                        >
+                            <h1 className="h2Modal"><strong>Atenção!</strong></h1>
+                            <p className="pModalTxt">Esse orçamento será deletado permanentemente e não poderá ser recuperado.</p>
+                            <p className="pModalSure" >Tem certeza que deseja continuar?</p>
+                            <div className="btnModal" >
+                                <button className="btn btn-lg btn-success" onClick={() => deleteData(idToDelete)} > Sim </button>
+                                <button className="btn  btn-lg btn-danger" onClick={() => setIsModalVisible(false)} > Não </button>
+                            </div>
+                        </Modal>
+                    ) : null}
                 <Aba
                 label1 = 'Solicitados'
                 label2 = 'Finalizados'
                 content={
                     <div>
-                    {!orcamentos? <h2>Não há solicitações no momento!</h2> : orcamentos.map(orcamento =>(
+                    {!orcamentos || orcamentos.length === 0 ? <h2 className="emptyOrcamento">Não há solicitações no momento!</h2> : orcamentos.map((orcamento, index) =>(
                         <main key={orcamento.id} className="caixaOrcamento">
                             <article>
                                 <header>
                                     <div className="headerClose">
                                         <p className="dataOrcamento">Solicitado em {orcamento.regData}, às {orcamento.hora}</p>
+                                       <div className="btnDelete" onClick={() => {
+                                           setIsModalVisible(true)
+                                           setIdToDelete(orcamento.id)}}>
+                                            <DeleteForeverIcon />
+                                        </div>
                                     </div>
                                     <hr></hr>
                                     <strong>{orcamento.nome}</strong>
@@ -90,12 +147,14 @@ function Orcamento(){
                                 
                                 <div className="price" >
                                     <lable>Valor: R$</lable>
-                                    <input type="money" id="price" value={orcamento.preco} />
+                                    <input type="money" id="price" value={orcamento.preco} onChange={e =>  changePriceInput(e, index)}/>
                                 </div>
 
-                            <button className='btn btn-success btn-lg btnFinalizar' id={orcamento} onClick={() => changeRespondido(orcamento, 1)}>Finalizar</button>
+                                <button className='btn btn-success btn-lg btnFinalizar' id={orcamento} onClick={() => changeRespondido(orcamento, 1)}>Finalizar</button>
+                            
                             </article>
                         </main>
+                        
                     ))}
                     </div>
 
@@ -104,12 +163,15 @@ function Orcamento(){
                 content2={
                     
                     <div>
-                    {!finalizados? <h2>Não há solicitações no momento!</h2> : finalizados.map(finalizado =>(
+                    {!finalizados || finalizados.length === 0 ? <h2 className="emptyOrcamento">Não há orçamentos finalizados no momento!</h2> : finalizados.map(finalizado =>(
                         <main key={finalizado.id} className="caixaOrcamento">
                             <article>
                                 <header>
                                     <div className="headerClose">
                                         <p className="dataOrcamento">Solicitado em {finalizado.regData}, às {finalizado.hora}</p>
+                                        <div className="btnDelete" onClick={() => {}}>
+                                            <DeleteForeverIcon />
+                                        </div>
                                     </div>
                                     <hr></hr>
                                     <strong>{finalizado.nome}</strong>
@@ -126,10 +188,17 @@ function Orcamento(){
                                         <p>{finalizado.telefone}</p>
                                     </div>
                                 </a>
+
+                                <div className="priceFinalizado" >
+                                    <lable>Valor:</lable>
+                                    <p>R$ {finalizado.preco}</p>
+                                </div>
+
                                 <div className="desc">
                                     <label>Descrição:</label>
                                     <p className="descricao">{finalizado.descricao}</p>
                                 </div>
+                                
                             </article>
                             <button className='btn btn-primary btn-lg btnFinalizar'  id={finalizado} onClick={() => changeRespondido(finalizado, 0)}>Retornar este para SOLICITADOS</button>
                         </main>
@@ -138,10 +207,7 @@ function Orcamento(){
 
                 }
                 />
-
-
-                
-            
+ 
             </div>
 
         </PageDefault>
