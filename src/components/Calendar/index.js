@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import moment from 'moment';
 
 import FormCalendar from '../FormCalendar';
@@ -12,6 +12,29 @@ import './style.css';
 
 function Calendar(){
 
+  const bookedDate = [
+    {
+      "day": 1,
+      "month": "Fevereiro",
+      "year": 2021
+    },
+    {
+      "day": 25,
+      "month": "Fevereiro",
+      "year": 2021
+    },
+    {
+      "day": 10,
+      "month": "Fevereiro",
+      "year": 2021
+    },
+    {
+      "day": 15,
+      "month": "Fevereiro",
+      "year": 2021
+    }
+  ]
+ 
     const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
     const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
     
@@ -21,7 +44,6 @@ function Calendar(){
     const[showMonthTable ,setShowMonthTable] = useState(false);
     const[showCalendarTable ,setShowCalendarTable] = useState(true);
     const[selectedDay, setSelectedDay] = useState();
-    //const[bookedDate, setBookedDate] = useState();
 
 
     const firstDayOfMonth = () => {
@@ -40,8 +62,7 @@ function Calendar(){
 
     const currentMonth = () => {
         var monthNum = dateObject.format("M");
-        var i = monthNum - 1;
-        return meses[i]
+        return meses[monthNum - 1]
     }
 
     const currentYear = () =>{
@@ -66,7 +87,7 @@ function Calendar(){
 
         let months = [];
         props.data.map((data, i) => {
-          months.push(
+          return months.push(
             <td
               key={data}
               className="calendar-month"
@@ -74,7 +95,7 @@ function Calendar(){
                 setMonth(data);
               }}
             >
-              <span>{meses[i]}</span>
+              <span className="calendar-month-picker">{meses[i]}</span>
             </td>
           );
         });
@@ -113,37 +134,74 @@ function Calendar(){
     let blanks = [];
     for (let i = 0; i < firstDayOfMonth(); i++) {
         blanks.push(
-          <td className="">{""}</td>
+          <td>{""}</td>
         );
       }
+      
 
+
+    var date = new Date();
+    var currMonthIndex = date.getMonth();
     let diasNoMes = [];
     for (let d = 1; d <= daysInMonth(); d++) {
-        let currtDay = d === currentDay() ? "today" : "";
-        diasNoMes.push(
+
+        let currtDay = d == currentDay() && meses[currMonthIndex] == currentMonth() ? "today" : "selectDay";
+
+        bookedDate.forEach(bookDate =>
+          d == bookDate.day && bookDate.month == currentMonth() && bookDate.year == currentYear() ? diasNoMes.push(
+            <td key={d} className="indisp">
+                <span>{d}</span>
+            </td>
+          ) : diasNoMes.push(
             <td key={d} className={currtDay}>
                 <span onClick={ e => {onDayClick(e, d)} } >{d}</span>
             </td>
-        );
+          )
+        )
+        
+  
     }
 
-    var totalSlots = [...blanks, ...diasNoMes];
-    let rows = [];
-    let cells = [];
+    let diasMes = diasNoMes.filter((dia, index, self) =>
+      index === self.findIndex((t) =>(
+        t.key === dia.key && t.props.className === dia.props.className
+      ))
+      )
 
-    totalSlots.forEach((row, i) => {
-        if (i % 7 !== 0) {
-          cells.push(row); // se o index não for igual a 7, isso significa para não ir para a próxima semana
-        } else {
-          rows.push(cells); // when reach next week we contain all td in last week to rows 
-          cells = []; // empty container 
-          cells.push(row); // in current loop we still push current row to new container
+      var daysMonth = diasMes.reduce((unique, o) => {
+        if(!unique.some(obj => obj.key === o.key && obj.props.className === "indisp" )) {
+          unique.push(o);
         }
-        if (i === totalSlots.length - 1) { // when end loop we add remain date
+        return unique;
+    },[]);
+
+ 
+    for( let i = 0; i < daysMonth.length - 1 ; i++){
+      if( daysMonth[i].key === daysMonth[i+1].key){
+        daysMonth.splice(i, 1)
+      }
+    }
+ 
+
+   var totalSlots = [...blanks, ...daysMonth];
+   let rows = [];
+   let cells = [];
+   
+    totalSlots.forEach((row, i) => {
+      if (i % 7 !== 0) {
+        cells.push(row); // se o index não for igual a 7, isso significa para não ir para a próxima semana
+      } else {
+        rows.push(cells); // when reach next week we contain all td in last week to rows 
+        cells = []; // empty container 
+        cells.push(row); // in current loop we still push current row to new container
+      }
+      if (i === totalSlots.length - 1) { // when end loop we add remain date
           rows.push(cells);
         }
       });
-    const onPrev = () => {
+      
+
+      const onPrev = () => {
         let curr = dateObject.subtract(1, "month");
         setDateObject(curr);
         let mes = meses[dateObject.format("M") - 1]
@@ -169,6 +227,16 @@ function Calendar(){
         }
     }
 
+/**
+ * <div className="subtitleTable">
+                    <div className="indisponivel">X</div>
+                    <text className="indispTxt">Indisponível</text>
+                    <div className="hoje"></div>
+                    <text>Hoje</text>
+                </div>
+ */
+
+
     return(
         <div className="calendar">
           <h3>Clique na data que deseja agendar</h3>
@@ -190,26 +258,22 @@ function Calendar(){
                 </span>
             </div>
            { !showMonthTable && (
-              <table className="calendar-day">
-                  <thead>
-                    <tr>{diasSemana.map(day => (
-                            <th key={day} className="weekDay" >
-                                {day}
-                            </th>
-                  ))}</tr>
-                  </thead>
-                  <tbody>{rows.map((d, i) =>( 
-                      <tr className="days">{d}</tr>
-                      ))}
-                  </tbody>
-              </table>
+             <div>
+                <table className="calendar-day">
+                    <thead>
+                      <tr>{diasSemana.map(day => (
+                              <th key={day} className="weekDay" >
+                                  {day}
+                              </th>
+                    ))}</tr>
+                    </thead>
+                    <tbody>{rows.map((d, i) =>( 
+                        <tr className="days">{d}</tr>
+                        ))}
+                    </tbody>
+                </table>
+              </div>
             )}
-            <div className="subtitleTable">
-                <div className="indisponivel"></div>
-                <text className="indispTxt">Indisponível </text>
-                <div className="avaliacao"></div>
-                <text>Em Avaliação </text>
-            </div>
             <FormCalendar bookDate={getBookDate()}/>
         </div>
     );
