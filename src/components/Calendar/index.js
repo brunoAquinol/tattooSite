@@ -10,12 +10,12 @@ import './style.css';
 
 
 
-function Calendar(){
+function Calendar(props){
 
   const bookedDate = [
     {
-      "day": 1,
-      "month": "Fevereiro",
+      "day": 28,
+      "month": "Abril",
       "year": 2021
     },
     {

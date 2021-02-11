@@ -56,12 +56,15 @@ th{
 
 .days{
     font-size: 20px;
-    cursor: pointer;
 }
 
 .today{
     border: 2px solid var(--mainOrange);
     border-radius: 50px;
+}
+
+.selectDay{
+    cursor: pointer;
 }
 
 .subtitleTable{
@@ -81,6 +84,7 @@ th{
 
 .indisp{
     color: rgb(100, 100, 100);
+    cursor: default;
 }
 
 .indispTxt{
